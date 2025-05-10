@@ -6,11 +6,11 @@
 #    By: roespici <roespici@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/14 05:25:01 by roespici          #+#    #+#              #
-#    Updated: 2025/05/07 16:15:54 by roespici         ###   ########.fr        #
+#    Updated: 2025/05/10 18:31:27 by roespici         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-DOCKER_COMPOSE = docker-compose
+DOCKER_COMPOSE = docker compose
 DOMAIN_NAME = roespici.42.fr
 DOCKER_COMPOSE_FILE = srcs/docker-compose.yml
 
