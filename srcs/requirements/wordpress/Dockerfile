@@ -11,7 +11,8 @@ RUN apk update && apk upgrade && apk add --no-cache \
     php-openssl\
     php-zlib\
     php-gd\
-	curl
+	curl\
+	mysql-client
 WORKDIR /var/www/wordpress
 RUN curl -O https://wordpress.org/latest.tar.gz && \
  tar -xzf latest.tar.gz --strip-components=1 && \
