@@ -1,5 +1,5 @@
 FROM alpine:3.20
-RUN apk update && apk upgrade && apk add \
+RUN apk update && apk upgrade && apk add --no-cache \
     php\
     php-fpm\
     php-mysqli\
@@ -11,13 +11,14 @@ RUN apk update && apk upgrade && apk add \
     php-openssl\
     php-zlib\
     php-gd\
-    curl\
-    vim\
-    sudo
+	curl
 WORKDIR /var/www/wordpress
 RUN curl -O https://wordpress.org/latest.tar.gz && \
  tar -xzf latest.tar.gz --strip-components=1 && \
- rm latest.tar.gz
+ rm latest.tar.gz || exit 1
+RUN apk add --no-cache ... && \
+ rm -rf /var/cache/apk/*
+
 RUN mkdir -p /run/php
 COPY ./tools/script.sh /setup_wordpress.sh
 RUN chmod +x /setup_wordpress.sh

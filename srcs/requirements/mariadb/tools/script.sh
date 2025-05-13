@@ -20,9 +20,9 @@ done
 
 # 2. Exécuter tes commandes mysql
 echo "✅ MariaDB est prêt, exécution des commandes..."
-mysql -e "CREATE DATABASE IF NOT EXISTS mydb;"
-mysql -e "CREATE USER IF NOT EXISTS 'user'@'%' IDENTIFIED BY 'password';"
-mysql -e "GRANT ALL PRIVILEGES ON mydb.* TO 'user'@'%';"
+mysql -e "CREATE DATABASE IF NOT EXISTS \`$DB_NAME\`;" || echo "Error while creating the database."
+mysql -e "CREATE USER IF NOT EXISTS '\`$DB_USER\`'@'%' IDENTIFIED BY '$DB_PASSWORD';" || echo "Error while creating the user."
+mysql -e "GRANT ALL PRIVILEGES ON \`$DB_NAME\`.* TO '\`$DB_USER\`'@'%';" || echo "Error while giving rights to the user."
 mysql -e "FLUSH PRIVILEGES;"
 
 # 3. Garder le conteneur en vie
