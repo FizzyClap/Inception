@@ -16,9 +16,6 @@ WORKDIR /var/www/wordpress
 RUN curl -O https://wordpress.org/latest.tar.gz && \
  tar -xzf latest.tar.gz --strip-components=1 && \
  rm latest.tar.gz || exit 1
-RUN apk add --no-cache ... && \
- rm -rf /var/cache/apk/*
-
 RUN mkdir -p /run/php
 COPY ./tools/script.sh /setup_wordpress.sh
 RUN chmod +x /setup_wordpress.sh
