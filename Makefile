@@ -10,7 +10,10 @@
 #                                                                              #
 # **************************************************************************** #
 
-DOCKER_COMPOSE = docker-compose
+include ./srcs/.env
+export
+
+DOCKER_COMPOSE = docker compose
 DOMAIN_NAME = roespici.42.fr
 DOCKER_COMPOSE_FILE = srcs/docker-compose.yml
 
@@ -25,6 +28,8 @@ all: build up
 
 build:
 	@echo -e "$(YELLOW)🔧 Building Docker images...$(NC)"
+	@mkdir $(VOLUME_MARIA) $(VOLUME_WORDPRESS)
+	@chmod 777 $(VOLUME_MARIA) $(VOLUME_WORDPRESS)
 	$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) build
 	@echo -e "$(GREEN)✅ Docker images built successfully!$(NC)"
 
@@ -42,6 +47,7 @@ restart: down up
 
 clean:
 	@echo -e "$(YELLOW)🧹 Cleaning Docker environment (containers + volumes)...$(NC)"
+	@sudo rm -rf $(VOLUME_MARIA) $(VOLUME_WORDPRESS)
 	$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) down -v --rmi local
 	@echo -e "$(GREEN)✅ Clean done.$(NC)"
 
