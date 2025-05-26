@@ -34,9 +34,9 @@ if ! wp core is-installed --path=/var/www/html --allow-root; then
         --allow-root
     echo "✅ WordPress installed."
 
-    wp user create "${WP_EDITOR_USER}" "${WP_EDITOR_EMAIL}" \
+    wp user create "${WORDPRESS_EDITOR_USER}" "${WORDPRESS_EDITOR_MAIL}" \
     --role=editor \
-    --user_pass="${WP_EDITOR_PASSWORD}" \
+    --user_pass="${WORDPRESS_EDITOR_PASSWORD}" \
     --path=/var/www/html
 fi
 
