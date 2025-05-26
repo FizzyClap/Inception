@@ -5,8 +5,6 @@ services:
     env_file: .env
     volumes:
       - mariadb_data:/var/lib/mysql
-    ports:
-      - "3306:3306"
     networks:
       - inception
     restart: always
@@ -19,8 +17,6 @@ services:
       - mariadb
     volumes:
       - wordpress_data:/var/www/html
-    ports:
-      - "8080:80"
     networks:
       - inception
     restart: always

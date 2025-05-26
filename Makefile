@@ -27,6 +27,7 @@ NC = \\033[0m # No Color
 all: build up
 
 build:
+	sudo systemctl restart docker
 	@echo -e "$(YELLOW)🔧 Building Docker images...$(NC)"
 	@mkdir $(VOLUME_MARIA) $(VOLUME_WORDPRESS)
 	@chmod 777 $(VOLUME_MARIA) $(VOLUME_WORDPRESS)
